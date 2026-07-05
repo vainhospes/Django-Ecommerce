@@ -31,10 +31,6 @@ post_save.connect(create_profile, sender=User)
 
 
 
-
-
-
-
 # Categories of Products
 class Category(models.Model):
 	name = models.CharField(max_length=50)
@@ -42,7 +38,6 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name
 
-	#@daverobb2011
 	class Meta:
 		verbose_name_plural = 'categories'
 

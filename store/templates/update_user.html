@@ -5,8 +5,8 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Update Profile</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Update User Profile...</p>
+                    <h1 class="display-4 fw-bolder">{{ user_name|capfirst }} Profile</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Update User Profile!</p>
                 </div>
             </div>
         </header>
@@ -26,8 +26,7 @@
       Update Profile
     </button>
 </form>
-
-<br/><br/>
+<br>
 <a href="{% url 'update_password' %}" class="btn btn-secondary">Update Password</a>
 
 <br/><br/>

@@ -12,8 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # password DB
-DB_PASSWORD_YO = os.environ['DB_PASSWORD_YO']
-
+DB_PASSWORD_YO = os.environ.get('DB_PASSWORD_YO')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -24,7 +23,8 @@ SECRET_KEY = 'django-insecure-x4m$gfeda-r+)u05g*bzm%8#_vz&8-wl^3epo45gqi#_eqwvtq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://djangotest.com', 'djangotest.com', 'django-ecommerce-production-81b6.up.railway.app', 'https://django-ecommerce-production-81b6.up.railway.app']
+# ALLOWED_HOSTS = ['https://djangotest.com', 'djangotest.com', 'django-ecommerce-production-81b6.up.railway.app', 'https://django-ecommerce-production-81b6.up.railway.app']
+ALLOWED_HOSTS = []
 CSRF_TRUSTED_ORIGINS = ['https://djangotest.com', 'https://django-ecommerce-production-81b6.up.railway.app']
 
 # Application definition
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
+                'store.context_processors.categories_processor',
 
             ],
         },
@@ -79,7 +80,6 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
@@ -87,12 +87,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': DB_PASSWORD_YO,
-        'HOST': 'viaduct.proxy.rlwy.net',
-        'PORT': '23278',
-        
+        'PASSWORD': 'wBAiZBzzrRxCMoKiutIjxmUcRzArSoKy',
+        'HOST': 'reseau.proxy.rlwy.net',
+        'PORT': '49331',
+
     }
 }
+
 
 
 # Password validation

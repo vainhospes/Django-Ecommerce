@@ -50,7 +50,7 @@ def update_info(request):
 
 			messages.success(request, "Your Info Has Been Updated!!")
 			return redirect('home')
-		return render(request, "update_info.html", {'form':form, 'shipping_form':shipping_form})
+		return render(request, "update_info.html", {'form':form, 'shipping_form':shipping_form, 'user_name':current_user.user.username})
 	else:
 		messages.success(request, "You Must Be Logged In To Access That Page!!")
 		return redirect('home')
@@ -79,6 +79,8 @@ def update_password(request):
 	else:
 		messages.success(request, "You Must Be Logged In To View That Page...")
 		return redirect('home')
+
+
 def update_user(request):
 	if request.user.is_authenticated:
 		current_user = User.objects.get(id=request.user.id)
@@ -90,28 +92,27 @@ def update_user(request):
 			login(request, current_user)
 			messages.success(request, "User Has Been Updated!!")
 			return redirect('home')
-		return render(request, "update_user.html", {'user_form':user_form})
+		return render(request, "update_user.html", {'user_form':user_form, 'user_name':current_user.username})
 	else:
 		messages.success(request, "You Must Be Logged In To Access That Page!!")
 		return redirect('home')
 
 
 def category_summary(request):
-	categories = Category.objects.all()
 	return render(request, 'category_summary.html', {"categories":categories})	
 
 def category(request, foo):
-	# Replace Hyphens with Spaces
-	foo = foo.replace('-', ' ')
-	# Grab the category from the url
-	try:
-		# Look Up The Category
-		category = Category.objects.get(name=foo)
-		products = Product.objects.filter(category=category)
-		return render(request, 'category.html', {'products':products, 'category':category})
-	except:
-		messages.success(request, ("That Category Doesn't Exist..."))
-		return redirect('home')
+    # Replace Hyphens with Spaces
+    foo = foo.replace('-', ' ')
+    # Grab the category from the url
+    try:
+        # Look Up The Category
+        category = Category.objects.get(name=foo)
+        products = Product.objects.filter(category=category)
+        return render(request, 'category.html', {'products':products, 'category':category, 'categories':categories})
+    except:
+        messages.success(request, ("That Category Doesn't Exist..."))
+        return redirect('home')
 
 
 def product(request,pk):
