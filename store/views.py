@@ -99,7 +99,7 @@ def update_user(request):
 
 
 def category_summary(request):
-	return render(request, 'category_summary.html', {"categories":categories})	
+	return render(request, 'category_summary.html', {})
 
 def category(request, foo):
     # Replace Hyphens with Spaces
@@ -109,7 +109,7 @@ def category(request, foo):
         # Look Up The Category
         category = Category.objects.get(name=foo)
         products = Product.objects.filter(category=category)
-        return render(request, 'category.html', {'products':products, 'category':category, 'categories':categories})
+        return render(request, 'category.html', {'products':products, 'category':category})
     except:
         messages.success(request, ("That Category Doesn't Exist..."))
         return redirect('home')
