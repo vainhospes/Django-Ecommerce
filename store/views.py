@@ -99,7 +99,7 @@ def update_user(request):
 
 
 def category_summary(request):
-	return render(request, 'category_summary.html', {})
+	return render(request, 'category_summary.html')
 
 def category(request, foo):
     # Replace Hyphens with Spaces
